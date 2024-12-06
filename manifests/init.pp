@@ -6,6 +6,7 @@
 #   include lidarr
 class lidarr (
   Optional[String]  $ensure,
+  Optional[String]  $lidarr_version,
   Optional[String]  $lidarr_lib_dir,
   Optional[String]  $lidarr_opt_dir,
   Optional[String]  $lidarr_user,
@@ -39,7 +40,7 @@ class lidarr (
     group  => $lidarr_media_group,
   }
 
-  $download_uri = "https://lidarr.servarr.com/v1/update/master/updatefile?os=linux&runtime=netcore&arch=${os_architecture}"
+  $download_uri = "https://github.com/Lidarr/Lidarr/releases/download/v${lidarr_version}/Lidarr.master.${lidarr_version}.linux-core-${os_architecture}.tar.gz"
   archive { $lidarr_opt_dir:
     ensure       => 'present',
     source       => $download_uri,
