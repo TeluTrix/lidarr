@@ -1,0 +1,26 @@
+<%- | Optional[String]  $systemd_description,
+      Optional[String]  $systemd_after,
+      Optional[String]  $systemd_user,
+      Optional[String]  $systemd_group,
+      Optional[String]  $systemd_wantedby,
+      Optional[String]  $systemd_type,
+      Optional[Integer] $systemd_timeout_stop_sec,
+      Optional[String]  $systemd_killmode,
+      Optional[String]  $systemd_restart,
+      Optional[String]  $lidarr_opt_dir,
+      Optional[String]  $lidarr_lib_dir,
+| -%>
+[Unit]
+Description=<%= $systemd_description %>
+After=<%= $systemd_after %>
+[Service]
+User=<%= $systemd_user %>
+Group=<%= $systemd_group %>
+Type=<%= $systemd_type %>
+
+ExecStart=<%= $lidarr_opt_dir %> -nobrowser -data=<%= $lidarr_lib_dir %>
+TimeoutStopSec=<%= $systemd_timeout_stop_sec %>
+KillMode=<%= $systemd_killmode %>
+Restart=<%= $systemd_restart %>
+[Install]
+WantedBy=<%= $systemd_wantedby %>

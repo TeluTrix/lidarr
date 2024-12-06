@@ -1,0 +1,12 @@
+---
+lidarr::ensure: 'present'
+lidarr::os_architecture: 'x64'
+lidarr::lidarr_lib_dir: '/var/lib/lidarr'
+lidarr::lidarr_opt_dir: '/opt/lidarr'
+lidarr::lidarr_user: 'lidarr'
+lidarr::lidarr_media_group: 'media'
+lidarr::systemd_after: 'syslog.target network.target'
+lidarr::systemd_wantedby: 'multi-user.target'
+lidarr::systemd_type: 'simple'
+lidarr::systemd_killmode: 'process'
+lidarr::systemd_restart: 'on-failure'
