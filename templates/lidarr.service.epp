@@ -18,7 +18,7 @@ User=<%= $systemd_user %>
 Group=<%= $systemd_group %>
 Type=<%= $systemd_type %>
 
-ExecStart=<%= $lidarr_opt_dir %> -nobrowser -data=<%= $lidarr_lib_dir %>
+ExecStart=<%= $lidarr_opt_dir %>/Lidarr -nobrowser -data=<%= $lidarr_lib_dir %>
 TimeoutStopSec=<%= $systemd_timeout_stop_sec %>
 KillMode=<%= $systemd_killmode %>
 Restart=<%= $systemd_restart %>

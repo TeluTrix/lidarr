@@ -33,6 +33,12 @@ class lidarr (
     group  => $lidarr_media_group,
   }
 
+  file { $lidarr_lib_dir:
+    ensure => directory,
+    owner  => $lidarr_user,
+    group  => $lidarr_media_group,
+  }
+
   $download_uri = "https://lidarr.servarr.com/v1/update/master/updatefile?os=linux&runtime=netcore&arch=${os_architecture}"
   archive { $lidarr_opt_dir:
     ensure       => 'present',
