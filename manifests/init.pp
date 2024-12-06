@@ -28,8 +28,8 @@ class lidarr (
   }
 
   file { $lidarr_opt_dir:
-    ensure => 'directory',
-    user   => $lidarr_user,
+    ensure => directory,
+    owner  => $lidarr_user,
     group  => $lidarr_media_group,
   }
 
