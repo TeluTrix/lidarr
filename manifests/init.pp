@@ -18,6 +18,10 @@ class lidarr (
   Optional[String]  $systemd_restart,
   Enum['x64', 'arm', 'arm64'] $os_architecture,
 ) {
+  group { $lidarr_media_group:
+    name => $lidarr_media_group,
+  }
+
   user { $lidarr_user:
     name   => $lidarr_user,
     groups => [$lidarr_media_group],
