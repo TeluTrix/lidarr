@@ -86,11 +86,4 @@ class lidarr (
     port     => $lidarr_port,
     protocol => 'tcp',
   }
-
-  # Make sure firewalld is running
-  service { 'firewalld':
-    ensure => running,
-    enable => true,
-    name   => 'firewalld',
-  }
 }
