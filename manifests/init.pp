@@ -29,15 +29,17 @@ class lidarr (
   }
 
   file { $lidarr_opt_dir:
-    ensure => directory,
-    owner  => $lidarr_user,
-    group  => $lidarr_media_group,
+    ensure  => directory,
+    owner   => $lidarr_user,
+    group   => $lidarr_media_group,
+    recurse => true,
   }
 
   file { $lidarr_lib_dir:
-    ensure => directory,
-    owner  => $lidarr_user,
-    group  => $lidarr_media_group,
+    ensure  => directory,
+    owner   => $lidarr_user,
+    group   => $lidarr_media_group,
+    recurse => true,
   }
   $archive_name = "Lidarr.master.${lidarr_version}.linux-core-${os_architecture}.tar.gz"
   $download_uri = "https://github.com/Lidarr/Lidarr/releases/download/v${lidarr_version}/${archive_name}"
