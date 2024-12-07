@@ -12,3 +12,4 @@ lidarr::systemd_killmode: 'process'
 lidarr::systemd_restart: 'on-failure'
 lidarr::systemd_timeout_stop_sec: 20
 lidarr::lidarr_version: '2.7.1.4417'
+lidarr::lidarr_port: 8686

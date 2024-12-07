@@ -11,6 +11,7 @@ class lidarr (
   Optional[String]  $lidarr_opt_dir,
   Optional[String]  $lidarr_user,
   Optional[String]  $lidarr_media_group,
+  Optional[Integer] $lidarr_port,
   Optional[String]  $systemd_after,
   Optional[String]  $systemd_wantedby,
   Optional[String]  $systemd_type,
@@ -76,5 +77,20 @@ class lidarr (
 
   package { ['curl', 'mediainfo', 'sqlite', 'libchromaprint']:
     ensure => 'present',
+  }
+
+  # Enable port in firewall
+  firewalld_port { 'Open port for lidarr to the public':
+    ensure   => present,
+    zone     => 'public',
+    port     => $lidarr_port,
+    protocol => 'tcp',
+  }
+
+  # Make sure firewalld is running
+  service { 'firewalld':
+    ensure => running,
+    enable => true,
+    name   => 'firewalld',
   }
 }
