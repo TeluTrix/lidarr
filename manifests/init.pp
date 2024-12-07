@@ -39,9 +39,9 @@ class lidarr (
     owner  => $lidarr_user,
     group  => $lidarr_media_group,
   }
-
-  $download_uri = "https://github.com/Lidarr/Lidarr/releases/download/v${lidarr_version}/Lidarr.master.${lidarr_version}.linux-core-${os_architecture}.tar.gz"
-  archive { $lidarr_opt_dir:
+  $archive_name = "Lidarr.master.${lidarr_version}.linux-core-${os_architecture}.tar.gz"
+  $download_uri = "https://github.com/Lidarr/Lidarr/releases/download/v${lidarr_version}/${archive_name}"
+  archive { "${lidarr_opt_dir}/${archive_name}":
     ensure       => 'present',
     source       => $download_uri,
     user         => $lidarr_user,
